@@ -196,12 +196,14 @@ class PhotoManagerPlugin(
             }
         }
 
+        @androidx.annotation.OptIn(androidx.core.os.BuildCompat.PrereleaseSdkCheck::class)
         if (BuildCompat.isAtLeastT() && applicationContext.applicationInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU) {
             if (call.method == Methods.requestPermissionExtend) {
                 permissions.remove(Manifest.permission.READ_EXTERNAL_STORAGE)
                 permissions.remove(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         } else {
+            @RequiresApi(33)
             if (call.method == Methods.requestPermissionExtend) {
                 permissions.remove(Manifest.permission.READ_MEDIA_IMAGES)
                 permissions.remove(Manifest.permission.READ_MEDIA_VIDEO)
