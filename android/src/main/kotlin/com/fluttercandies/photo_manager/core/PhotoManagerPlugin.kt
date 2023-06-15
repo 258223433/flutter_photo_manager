@@ -196,6 +196,19 @@ class PhotoManagerPlugin(
             }
         }
 
+        if (BuildCompat.isAtLeastT() && applicationContext.applicationInfo.targetSdkVersion >= Build.VERSION_CODES.TIRAMISU) {
+            if (call.method == Methods.requestPermissionExtend) {
+                permissions.remove(Manifest.permission.READ_EXTERNAL_STORAGE)
+                permissions.remove(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        } else {
+            if (call.method == Methods.requestPermissionExtend) {
+                permissions.remove(Manifest.permission.READ_MEDIA_IMAGES)
+                permissions.remove(Manifest.permission.READ_MEDIA_VIDEO)
+                permissions.remove(Manifest.permission.READ_MEDIA_AUDIO)
+            }
+        }
+
         val utils = permissionsUtils.apply {
             withActivity(activity)
             permissionsListener = object : PermissionsListener {
