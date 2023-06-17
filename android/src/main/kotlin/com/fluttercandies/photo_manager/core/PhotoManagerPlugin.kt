@@ -205,7 +205,7 @@ class PhotoManagerPlugin(
                 if (permissionsUtils.havePermissionInManifest(
                         applicationContext,
                         Manifest.permission.READ_MEDIA_IMAGES
-                    )
+                    ) && !permissions.contains(Manifest.permission.READ_MEDIA_IMAGES)
                 ) {
                     permissions.add(Manifest.permission.READ_MEDIA_IMAGES)
                 }
@@ -213,7 +213,7 @@ class PhotoManagerPlugin(
                 if (permissionsUtils.havePermissionInManifest(
                         applicationContext,
                         Manifest.permission.READ_MEDIA_VIDEO
-                    )
+                    ) && !permissions.contains(Manifest.permission.READ_MEDIA_VIDEO)
                 ) {
                     permissions.add(Manifest.permission.READ_MEDIA_VIDEO)
                 }
@@ -221,7 +221,7 @@ class PhotoManagerPlugin(
                 if (permissionsUtils.havePermissionInManifest(
                         applicationContext,
                         Manifest.permission.READ_MEDIA_AUDIO
-                    )
+                    ) && !permissions.contains(Manifest.permission.READ_MEDIA_AUDIO)
                 ) {
                     permissions.add(Manifest.permission.READ_MEDIA_AUDIO)
                 }
@@ -235,7 +235,7 @@ class PhotoManagerPlugin(
                 if (permissionsUtils.havePermissionInManifest(
                         applicationContext,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    )
+                    ) && !permissions.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 ) {
                     permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 }
@@ -243,7 +243,7 @@ class PhotoManagerPlugin(
                 if (permissionsUtils.havePermissionInManifest(
                         applicationContext,
                         Manifest.permission.READ_EXTERNAL_STORAGE
-                    )
+                    ) && !permissions.contains(Manifest.permission.READ_EXTERNAL_STORAGE)
                 ) {
                     permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
                 }
