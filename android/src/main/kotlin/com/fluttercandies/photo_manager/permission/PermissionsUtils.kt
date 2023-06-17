@@ -119,7 +119,12 @@ class PermissionsUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             resetStatus()
             for (p in permissions) {
-                if (mActivity!!.checkSelfPermission(p) == PackageManager.PERMISSION_DENIED) {
+                //小米手机有一个奇特之处
+                val model = Build.MODEL
+                val isXiaomi = model.contains("MI") || model.contains("Xiaomi")
+                if (mActivity!!.checkSelfPermission(p) == PackageManager.PERMISSION_DENIED
+                    || (isXiaomi && p == Manifest.permission.ACCESS_MEDIA_LOCATION)
+                ) {
                     // Add the denied permission to the pending list.
                     needToRequestPermissionsList.add(p)
                 }
